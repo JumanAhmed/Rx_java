@@ -8,17 +8,19 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
-public class FirstExampleActivity extends AppCompatActivity {
+public class SecondExampleActivity extends AppCompatActivity {
 
     private static final String TAG = FirstExampleActivity.class.getSimpleName();
     private Disposable disposable;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_example);
+        setContentView(R.layout.activity_second_example);
 
         // observable
         Observable<String> animalsObservable = getAnimalsObservable();
@@ -26,17 +28,24 @@ public class FirstExampleActivity extends AppCompatActivity {
         // observer
         Observer<String> animalsObserver = getAnimalsObserver();
 
-        // observer subscribing to observable
+
         // observer subscribing to observable
         animalsObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .filter(new Predicate<String>() {
+                    @Override
+                    public boolean test(String s) throws Exception {
+                        return s.toLowerCase().startsWith("b");
+                    }
+                })
                 .subscribeWith(animalsObserver);
     }
 
 
-    private Observer<String> getAnimalsObserver(){
+    private Observer<String> getAnimalsObserver() {
         return new Observer<String>() {
+
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, "onSubscribe");
@@ -61,11 +70,14 @@ public class FirstExampleActivity extends AppCompatActivity {
     }
 
 
-    private Observable<String> getAnimalsObservable(){
-        return Observable.just("Ant", "Bee", "Cat", "Dog", "Fox");
+    private Observable<String> getAnimalsObservable() {
+        return Observable.fromArray(
+                "Ant", "Ape",
+                "Bat", "Bee", "Bear", "Butterfly",
+                "Cat", "Crab", "Cod",
+                "Dog", "Dove",
+                "Fox", "Frog");
     }
-
-
 
     @Override
     protected void onDestroy() {
@@ -74,7 +86,4 @@ public class FirstExampleActivity extends AppCompatActivity {
         // don't send events once the activity is destroyed
         disposable.dispose();
     }
-
 }
-
-

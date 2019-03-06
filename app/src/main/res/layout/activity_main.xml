@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
@@ -15,5 +16,15 @@
         android:text="First Rx java Example"
         android:textAllCaps="false"
         android:onClick="firstExample"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:text="Filter Operator Example"
+        android:textAllCaps="false"
+        android:onClick="secondExample"/>
 
 </LinearLayout>

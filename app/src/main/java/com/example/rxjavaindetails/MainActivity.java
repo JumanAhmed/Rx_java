@@ -16,4 +16,8 @@ public class MainActivity extends AppCompatActivity {
     public void firstExample(View view) {
         startActivity(new Intent(getApplicationContext(), FirstExampleActivity.class));
     }
+
+    public void secondExample(View view) {
+        startActivity(new Intent(getApplicationContext(), SecondExampleActivity.class));
+    }
 }
