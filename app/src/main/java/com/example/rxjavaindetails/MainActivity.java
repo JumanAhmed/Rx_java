@@ -20,4 +20,12 @@ public class MainActivity extends AppCompatActivity {
     public void secondExample(View view) {
         startActivity(new Intent(getApplicationContext(), SecondExampleActivity.class));
     }
+
+    public void ThirdExample(View view) {
+        startActivity(new Intent(getApplicationContext(), ThirdExampleActivity.class));
+    }
+
+    public void fourthExample(View view) {
+        startActivity(new Intent(getApplicationContext(), FourthExampleActivity.class));
+    }
 }

@@ -27,4 +27,25 @@
         android:textAllCaps="false"
         android:onClick="secondExample"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:text="Multiple Observer, Composite Disposable, Map Operator"
+        android:textAllCaps="false"
+        android:onClick="ThirdExample"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:text="Custom Data Type"
+        android:textAllCaps="false"
+        android:onClick="fourthExample"/>
+
 </LinearLayout>
